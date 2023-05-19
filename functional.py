@@ -1,5 +1,8 @@
 import tensorflow as tf
 import numpy
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
 epoch = 5
 mnist = tf.keras.datasets.mnist
 (x_train, y_train),(x_test, y_test) = mnist.load_data()
@@ -27,6 +30,8 @@ model.compile(loss= tf.keras.losses.SparseCategoricalCrossentropy(from_logits=Tr
 h = model.fit(x_train, y_train, epochs=epoch)
 
 predictions = model.predict(x_test)
+plt.imshow(x_test[3])
+plt.show()
 print(numpy.argmax(predictions[3]))
 print(y_test[3])
 
